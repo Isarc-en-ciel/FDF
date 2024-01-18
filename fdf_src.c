@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 13:48:00 by iwaslet           #+#    #+#             */
-/*   Updated: 2024/01/16 12:52:27 by iwaslet          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:06:29 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,22 @@ int	mlx_error(int type, t_vars *vars)
 	return (1);
 }
 
+int	ft_free_two(char *s1, char *s2)
+{
+	if (s1)
+		free (s1);
+	if (s2)
+		free (s2);
+}
+
+/*
 int	manage_map(char *map, t_vars *vars)
 {
 	int		fd;
-	int		i;
-	int		j;
 	char	**tab;
 	char	**colours;
 	char	*coord;
 
-	i = 0;
-	j = 0;
 	//check qu'on a un ".fdf"
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
@@ -58,12 +63,19 @@ int	manage_map(char *map, t_vars *vars)
 	while (coord)
 	{
 		tab = ft_split(coord, " ");
-		//recuperer les couleurs
-		while (tab++)
+		int i = 0;
+		while (tab[i])
+			i++;
+		t_point *point = malloc(sizeof(t_point) * (i + 1));
+		i = 0;
+		while (tab[i])
 		{
-			tab = ft_atoi(tab);
+			//compter les "\n" strchr ?
+			
+			point[i].value = ft_atoi(tab[i]);
+			point[i].rgb = ft_on_de_demerde();
+			i++;
 		}
-		j++;
 		free(coord);
 		coord = get_next_line(fd);
 		if (!coord)
@@ -71,3 +83,4 @@ int	manage_map(char *map, t_vars *vars)
 	}
 	return (0);
 }
+*/

@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:44:30 by iwaslet           #+#    #+#             */
-/*   Updated: 2024/01/15 19:25:17 by iwaslet          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:06:45 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,21 @@ typedef struct s_data
 	int	lg;
 }				t_data;
 
+typedef struct s_point
+{
+	int				value;
+	char			*rgb;
+}				t_point;
+
+
 void	key_hook(int keycode, t_vars *vars);
 void	mouse_hook(int code, t_vars *vars);
 int		mlx_error(int type, t_vars *vars);
 void	close_window(t_vars *vars);
+
+int		ft_count_lines(char *text);
+int		manage_map(char *map, t_vars *vars);
+int		ft_free_two(char *s1, char *s2);
+int		ft_fill_tab(char *lngstr);
 
 #endif
